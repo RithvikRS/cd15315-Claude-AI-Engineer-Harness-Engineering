@@ -62,7 +62,7 @@ python -m claims_intake.run --all
 pytest tests/ -v
 ```
 
-`runs/<ts>/summary.md` should show 7 routed, 1 escalated. Estimated cost ≈ $0.05 on Haiku 4.5. The full pytest suite (29 tests) should be green.
+`runs/<ts>/summary.md` should show 7 routed, 1 escalated. Estimated cost ≈ $0.05 on Haiku 4.5. The full pytest suite (30 tests) should be green.
 
 ### Troubleshooting
 

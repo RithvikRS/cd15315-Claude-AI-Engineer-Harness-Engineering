@@ -84,6 +84,8 @@ def _run_one(
             )
         except (BudgetExceeded, UnexpectedStopReason) as exc:
             error = f"{type(exc).__name__}: {exc}"
+    if state is not None and not session.terminal_called:
+        _escalate_without_terminal(executor, session)
     return FixtureResult(
         fixture=fixture,
         session=session,
@@ -91,6 +93,32 @@ def _run_one(
         error=error,
         elapsed_s=time.monotonic() - t0,
         clarifications_asked=len(session.clarifications_asked),
+    )
+
+
+def _escalate_without_terminal(executor: Any, session: ClaimSession) -> None:
+    """Deterministic backstop: the model ended its turn without routing or escalating.
+
+    The loop correctly stops on end_turn; whether a terminal tool was called is a
+    separate question, answered here in code rather than left to the model. The
+    claim is escalated through the same tool the model would have used, so it is
+    written to escalations.jsonl like any other escalation.
+    """
+    executor(
+        "escalate_to_human",
+        {
+            "reason": "model ended its turn without a terminal action (deterministic backstop)",
+            "structured_summary": {
+                "policy_id": session.policy_id,
+                "root_cause": "no terminal tool called before end_turn",
+                "candidate_claim_types": (
+                    [session.classification["claim_type"]] if session.classification else []
+                ),
+                "case_facts": dict(session.case_facts),
+                "recommended_action": "human review of the full transcript",
+                "confidence": 0.0,
+            },
+        },
     )
 
 
