@@ -1,0 +1,50 @@
+run_id: 20261109-183347  (writing to runs\20261109-183347)
+
+[1/3] loading transcript + computing baseline token count
+      baseline transcript tokens: 38708
+[2/3] extracting case facts (LLM call)
+[3/3] compressing resolved segments (LLM calls)
+      resolved/refund: in=12344 out=342
+      resolved/subscription: in=11485 out=588
+
+      assembled tokens: 16931  (56.26% reduction)
+        case_facts                            204
+        resolved_refund                       355
+        resolved_subscription                 601
+        active                              15789
+
+[eval] running 6 questions against compressed context
+      PASS  Q1  What was the actual refund amount processed for order ORD-77310?
+            answer: The refund amount processed for order ORD-77310 was **$22.14**.
+
+This refund was issued for a damage claim covering four
+      PASS  Q2  Why did the customer cancel their subscription?
+            answer: According to the case facts provided, the customer's subscription (SUB-22119, Pantry Plus Monthly) was cancelled because
+      PASS  Q3  What is the failure code on the current payment-method update?
+            answer: According to the case facts provided, the payment-method update failure code is: **AVS_MISMATCH**
+
+The payment update is
+      PASS  Q4  What is the last-4 of the new card the customer is trying to add?
+            answer: The last-4 of the new card the customer is trying to add is **7782**.
+
+This is a Visa card with an expiration date of Se
+      PASS  Q5  Did the customer receive their subscription proration refund?
+            answer: Based on the context provided, yes — the customer (CUST-88421) received their subscription proration refund.
+
+**Key fact
+      PASS  Q6  What is the structured status of the payment-method update issue (use the exact status token from the case record, not a paraphrase)?
+            answer: According to the case facts provided at the beginning of the context, the structured status of the payment-method update
+      => 6/6 passed
+
+[eval-control] running case-facts-stripped variant against Q1, Q6
+      PASS  Q1  (held without case facts)
+            answer: According to the context provided, the refund amount processed for order ORD-77310 was **$22.14**.
+
+This refund was issu
+      FAIL  Q6  (regressed)
+            answer: # Unknown
+
+The payment-method update issue does not have a structured status token recorded in the case record. The conv
+      => 1/2 control questions regressed (≥1 required)
+
+done. artifacts in: runs\20261109-183347

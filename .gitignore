@@ -19,3 +19,11 @@ uv.lock
 .ruff_cache/
 .coverage
 htmlcov/
+
+# Generated run output from the solution folders (captured under the capstone evidence/ instead)
+*/exercises/*/solution/runs/
+*/*/solution/runs/
+*/*/solution/data/warm.sqlite
+*/*/solution/data/hot_state.json
+*/*/solution/data/shift_scratchpad.jsonl
+*/*/solution/data/forks/

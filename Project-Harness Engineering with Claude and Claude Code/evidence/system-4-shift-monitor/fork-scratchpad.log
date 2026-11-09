@@ -1,0 +1,25 @@
+base hot_state.json      : 980 bytes | sha256[:16] a6ea93423067e6af
+main scratchpad entries  : 2
+
+forked H1-lot-2026-0430-B
+   dir                   : data/forks/H1-lot-2026-0430-B
+   copied state          : 980 bytes | sha256[:16] a6ea93423067e6af
+   after local mutation  : sha256[:16] d9b8a1754c114d0c
+   isolated pad entries  : 1
+
+forked H2-vp4-vent-squeal
+   dir                   : data/forks/H2-vp4-vent-squeal
+   copied state          : 980 bytes | sha256[:16] a6ea93423067e6af
+   after local mutation  : sha256[:16] e8cc077844d8e189
+   isolated pad entries  : 1
+
+ISOLATION CHECK
+   base hot_state.json   : 980 bytes | sha256[:16] a6ea93423067e6af (unchanged)
+   base summary still    : Shift C 2026-04-30: 3 high + 2 medium defects on capacitor-b ...
+
+MERGE
+   main pad entries      : 2 -> 4 (+2 merged from 2 forks)
+   merged: H1-lot-2026-0430-B :: Single-lot dielectric defect: quarantine lot 2026-0430-B
+   merged: H2-vp4-vent-squeal :: Mechanical PM issue, unrelated to capacitor lot
+
+   base hot_state.json after merge: a6ea93423067e6af (still unchanged)

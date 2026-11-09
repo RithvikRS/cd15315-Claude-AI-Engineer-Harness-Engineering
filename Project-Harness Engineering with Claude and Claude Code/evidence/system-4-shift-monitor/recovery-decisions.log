@@ -1,0 +1,17 @@
+STALE_RESUME_THRESHOLD_MINUTES = 30
+now = 2026-04-30T22:00:00+00:00
+
+manifest state                      last step age   decision
+------------------------------------------------------------------
+incomplete, 1 step                          5 min   resume
+incomplete, 1 step                         10 min   resume
+incomplete, 1 step                         29 min   resume
+incomplete, 1 step                         30 min   resume
+incomplete, 1 step                         31 min   fresh
+incomplete, 1 step                         45 min   fresh
+incomplete, 1 step                        240 min   fresh
+empty (no steps)                                -   fresh
+complete                                    2 min   fresh
+
+manifest reloaded from disk: 2 steps, complete=False
+decision on reloaded partial: resume
