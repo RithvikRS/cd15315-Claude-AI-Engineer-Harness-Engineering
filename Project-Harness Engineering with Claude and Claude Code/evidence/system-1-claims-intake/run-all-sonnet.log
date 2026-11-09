@@ -1,0 +1,19 @@
+run_dir: C:\Users\rithv\OneDrive\Desktop\Development\Git Repo\cd15315-Claude-AI-Engineer-Harness-Engineering\Build a Claims Intake Agent with a stop_reason-Driven Loop\exercises\03-dynamic-decomposition\solution\runs\20261109_183657
+[claim_01_kitchen_fire] policy=POL-1001 expected=routed
+  → outcome=escalated turns=2 clarifications=0 tokens=6295/453 est=$0.0257
+[claim_02_stolen_bike] policy=POL-1007 expected=routed
+  → outcome=routed turns=6 clarifications=0 tokens=21581/1005 est=$0.0798
+[claim_03_water_damage] policy=POL-1004 expected=routed
+  → outcome=routed turns=7 clarifications=1 tokens=26994/1345 est=$0.1012
+[claim_04_neighbor_injury] policy=POL-1002 expected=routed
+  → outcome=routed turns=6 clarifications=0 tokens=23042/1168 est=$0.0866
+[claim_05_auto_collision] policy=POL-1003 expected=routed
+  → outcome=routed turns=5 clarifications=0 tokens=19086/1079 est=$0.0734
+[claim_06_low_confidence_escalation] policy=POL-1008 expected=escalated
+  → outcome=escalated turns=8 clarifications=0 tokens=27131/875 est=$0.0945
+[claim_07_tree_falls_on_car] policy=POL-1005 expected=routed
+  → outcome=escalated turns=2 clarifications=0 tokens=6230/506 est=$0.0263
+[claim_08_minor_porch_damage] policy=POL-1006 expected=routed
+  → outcome=routed turns=5 clarifications=0 tokens=18386/953 est=$0.0695
+summary: C:\Users\rithv\OneDrive\Desktop\Development\Git Repo\cd15315-Claude-AI-Engineer-Harness-Engineering\Build a Claims Intake Agent with a stop_reason-Driven Loop\exercises\03-dynamic-decomposition\solution\runs\20261109_183657\summary.md
+total estimated cost: $0.5570
